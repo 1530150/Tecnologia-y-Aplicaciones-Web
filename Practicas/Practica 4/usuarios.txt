@@ -1,0 +1,7 @@
+0, 1530150, Brian Elí Becerra Hernández, Ingeniería en Tecnologías de la Información, 1530150@upv.edu.mx, 8341186304
+1, 128, Mario Humberto Rodríguez Chávez, Ingeniería en Tecnologías de la Información, 8349204854 
+0, 1530326, Angela Judith Carrizales Pérez, Ingeniería en Tecnologías de la Información, 1530326@upv.edu.mx, 8341189386 
+0, 1530438, Leonardo Daniel Alonso Cepeda, Ingeniería en Tecnologías de la Información, 1530438@upv.edu.mx, 8341088876 
+0, 1630109, Ricardo Antonio Tejada Ordoñez, Ingeniería en Tecnologías de Manufactura, 1630109@upv.edu.mx, 8342471528 
+1, 321, Said Polanco Martagon, Ingeniería en Tecnologías de la Información, 7771628699 
+1, 421, Karla Esmeralda Vázquez Ortiz, Ingeniería en Tecnologías de la Información, +33768164970 
