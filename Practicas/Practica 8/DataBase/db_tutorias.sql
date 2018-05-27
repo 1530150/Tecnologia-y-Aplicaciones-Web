@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 26-05-2018 a las 05:23:16
+-- Tiempo de generación: 27-05-2018 a las 16:54:21
 -- Versión del servidor: 10.1.28-MariaDB
 -- Versión de PHP: 7.1.10
 
@@ -45,8 +45,7 @@ INSERT INTO `alumnos` (`matricula`, `nombre`, `carrera`, `tutor`) VALUES
 ('1530150', 'Brian Elí Becerra Hernández', 1, 1),
 ('1530326', 'Angela Judith Carrizales Pérez', 1, 1),
 ('1530438', 'Leonardo Daniel Alonso Cepeda', 1, 1),
-('asds', 'ssdsda', 3, 2),
-('sdasd', 'asdasd', 1, 1);
+('232190', 'Pedro', 3, 2);
 
 -- --------------------------------------------------------
 
@@ -69,9 +68,7 @@ INSERT INTO `alumnos_tutoria` (`alumno`, `tutoria`) VALUES
 ('1530326', 16),
 ('1530438', 17),
 ('1530438', 20),
-('asds', 18),
-('asds', 19),
-('sdasd', 19);
+('232190', 26);
 
 -- --------------------------------------------------------
 
@@ -101,9 +98,9 @@ INSERT INTO `carreras` (`id`, `nombre`) VALUES
 CREATE TABLE `profesores` (
   `numEmpleado` int(11) NOT NULL,
   `nombre` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `nivel` int(11) NOT NULL,
+  `nivel` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `password` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `carrera` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -112,8 +109,9 @@ CREATE TABLE `profesores` (
 --
 
 INSERT INTO `profesores` (`numEmpleado`, `nombre`, `nivel`, `email`, `password`, `carrera`) VALUES
-(1, 'Jorge Omar Jasso Luna', 0, 'ojassol@upv.edu.mx', 'ojassol', 1),
-(2, 'Mario Humberto Rodríguez Chávez', 0, 'mrodriguezc@upv.edu.mx', 'mario123', 1);
+(1, 'Jorge Omar Jasso Luna', 'Usuario', 'ojassol@upv.edu.mx', '0ea6c751a2c794066848380bb7d6202a', 1),
+(2, 'Mario Humberto Rodríguez Chávez', 'Administrador', 'mrodriguezc@upv.edu.mx', 'aeb34368c5d53aee32431b5386f71c56', 1),
+(5, 'Nuevo profe', 'Usuario', 'pprofep@upv.edu.mx', '69c877c03c9cae228b41f5ab6507557d', 1);
 
 -- --------------------------------------------------------
 
@@ -135,11 +133,10 @@ CREATE TABLE `tutorias` (
 --
 
 INSERT INTO `tutorias` (`id`, `tutor`, `fecha`, `hora`, `tipo_tutoria`, `descripcion`) VALUES
-(16, 1, '2018-05-19', '12:30', 'Grupal', 'naams'),
-(17, 1, '2018-05-19', '12:39', 'Individual', 'sddad'),
-(18, 2, '2018-05-13', '3.2', 'Individual', 'ñlñlñlñl'),
-(19, 2, '2018-05-20', '2:30', 'Grupal', 'lksldkñlk'),
-(20, 1, '', '', 'Grupal', '');
+(16, 1, '2018-05-19', '12:30', 'Grupal', 'Reunión de tutorías'),
+(17, 1, '2018-05-19', '12:39', 'Individual', 'Dudas de la clase de programación web'),
+(20, 1, '2018-05-12', '11:10', 'Grupal', 'Dudas de la materia de minería de datos'),
+(26, 2, '2018-05-20', '10:10', 'Individual', 'Para revisar avances de la materia de Tecnologías y Aplicaciones Web');
 
 --
 -- Índices para tablas volcadas
@@ -194,13 +191,13 @@ ALTER TABLE `carreras`
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `numEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `numEmpleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tutorias`
 --
 ALTER TABLE `tutorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas
