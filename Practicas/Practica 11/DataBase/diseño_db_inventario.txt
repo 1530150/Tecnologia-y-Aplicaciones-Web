@@ -1,0 +1,27 @@
+tabla usuarios(
+	nombre,
+	fecha_nacimiento,
+	direccion,
+	correo,
+	telefono
+);
+
+tabla productos(
+	nombre,
+	descripcion,
+	precio
+);
+
+tabla clientes(
+	nombre,
+	direccion,
+	correo,
+	telefono
+);
+
+tabla distribuidores(
+	nombre,
+	descripcion,
+	correo,
+	telefono
+);
