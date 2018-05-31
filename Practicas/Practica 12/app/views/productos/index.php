@@ -45,6 +45,7 @@
                   <td>
                     <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
                     <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
+                    <a href="<?php echo RUTA_URL?>/public/productos/detalles" type="button" class="btn btn-group-vertical btn-warning">Detalles</a>
                   </td>
                 </tr>
                 <tr>
@@ -54,6 +55,7 @@
                   <td>
                     <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
                     <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
+                    <a href="<?php echo RUTA_URL?>/public/productos/detalles" type="button" class="btn btn-group-vertical btn-warning">Detalles</a>
                   </td>
                 </tr>
                 <tr>
@@ -63,6 +65,7 @@
                   <td>
                     <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
                     <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
+                    <a href="<?php echo RUTA_URL?>/public/productos/detalles" type="button" class="btn btn-group-vertical btn-warning">Detalles</a>
                   </td>
                 </tr>
                 </tbody>

@@ -11,8 +11,8 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Clientes
-        <small>Inicio</small>
+        Detalles del producto
+        <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -28,50 +28,58 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
+              <div class="pull-right">
+                <button type="button" class="btn btn-group-vertical btn-info">Agregar stock</button>
+                <button type="button" class="btn btn-group-vertical btn-danger">Eliminar stock</button>
+              </div>
+              <h1>Producto 1</h1>
+              <div class="col-xs-3" style="padding: 100px; border-style: solid; border-width: 1px;">
+
+              </div>
+                <div style="padding: 100px;">
+
+                </div>
+                <br>
+                <h4><b>Precio:</b> $250</h4>
+                <h4><b>En stock:</b> 15</h4>
+              </div>
+            </div>
+
+            <div class="box">
+              <!-- /.box-header -->
+              <h3 style="padding-left: 12px"><b>Historial de inventario</b></h3>
+              <div class="box-body">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Nombre</th>
-                  <th>Fecha de nacimiento</th>
-                  <th>Dirección</th>
-                  <th>Correo</th>
-                  <th>Teléfono</th>
-                  <th>Opciones</th>
+                  <th>Fecha</th>
+                  <th>Hora</th>
+                  <th>Descripción</th>
+                  <th>Referencia</th>
+                  <th>Total</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Nombre 1</td>
-                  <td>31-12-1990</td>
-                  <td>Dirección 1</td>
-                  <td>Correo 1</td>
-                  <td>Teléfono 1</td>
-                  <td>
-                    <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
-                    <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
-                  </td>
+                  <td>12/Mayo/2018</td>
+                  <td>12:04</td>
+                  <td>Usuario agregó 1 producto</td>
+                  <td>123</td>
+                  <td>1</td>
                 </tr>
                 <tr>
-                  <td>Nombre 2</td>
-                  <td>31-12-1990</td>
-                  <td>Dirección 2</td>
-                  <td>Correo 2</td>
-                  <td>Teléfono 2</td>
-                  <td>
-                    <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
-                    <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
-                  </td>
+                  <td>16/Mayo/2018</td>
+                  <td>14:16</td>
+                  <td>Usuario eliminó 4 producto</td>
+                  <td>942</td>
+                  <td>4</td>
                 </tr>
                 <tr>
-                  <td>Nombre 3</td>
-                  <td>31-12-1990</td>
-                  <td>Dirección 3</td>
-                  <td>Correo 3</td>
-                  <td>Teléfono 3</td>
-                  <td>
-                    <button type="button" class="btn btn-group-vertical btn-primary">Modificar</button>
-                    <button type="button" class="btn btn-group-vertical btn-danger">Eliminar</button>
-                  </td>
+                  <td>24/Mayo/2018</td>
+                  <td>17:32</td>
+                  <td>Usuario agregó 5 productos</td>
+                  <td>493</td>
+                  <td>5</td>
                 </tr>
                 </tbody>
               </table>

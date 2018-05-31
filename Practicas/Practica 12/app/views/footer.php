@@ -39,6 +39,8 @@
     <script src="<?php echo RUTA_URL?>/public/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo RUTA_URL?>/public/bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo RUTA_URL?>/public/bower_components/select2/dist/js/select2.full.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo RUTA_URL?>/public/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

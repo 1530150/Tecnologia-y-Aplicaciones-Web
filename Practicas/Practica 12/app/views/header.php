@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="<?php echo RUTA_URL?>/public/bower_components/bootstrap-daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo RUTA_URL?>/public/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo RUTA_URL?>/public/bower_components/select2/dist/css/select2.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -335,7 +337,7 @@
             <li><a href="<?php echo RUTA_URL?>/public/usuarios/"><i class="fa fa-circle-o"></i> Ver usuarios</a></li>
           </ul>
         </li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-cube"></i> <span>Productos</span>
@@ -344,11 +346,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i>Agregar producto</a></li>
+            <li class="active"><a href="<?php echo RUTA_URL?>/public/productos/agregar"><i class="fa fa-circle-o"></i>Agregar producto</a></li>
             <li><a href="<?php echo RUTA_URL?>/public/productos/"><i class="fa fa-circle-o"></i> Ver productos</a></li>
           </ul>
         </li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-male"></i> <span>Clientes</span>
@@ -361,7 +363,7 @@
             <li><a href="<?php echo RUTA_URL?>/public/clientes/"><i class="fa fa-circle-o"></i> Ver clientes</a></li>
           </ul>
         </li>
-        
+
         <li class="treeview">
           <a href="#">
             <i class="fa fa-truck"></i> <span>Proveedores</span>
@@ -375,13 +377,11 @@
           </ul>
         </li>
       </ul>
-      
-      
+
+
     </section>
     <!-- /.sidebar -->
   </aside>
-  
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    
-    

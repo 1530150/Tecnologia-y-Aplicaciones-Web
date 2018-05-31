@@ -13,5 +13,15 @@
       $this->view("productos/index");
     }
 
+    //Página para agregar un producto
+    public function agregar(){
+      $this->view("productos/agregar");
+    }
+
+    //Página para agregar un producto
+    public function detalles(){
+      $this->view("productos/detalles");
+    }
+
   }
 ?>
