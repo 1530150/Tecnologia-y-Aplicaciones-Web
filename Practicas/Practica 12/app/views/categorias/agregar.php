@@ -11,8 +11,8 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Agregar producto
-        <small>Productos</small>
+        Agregar categoría
+        <small>Categorías</small>
       </h1>
     </section>
 
@@ -24,35 +24,15 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" id="formulario" action="<?php echo RUTA_URL?>/public/productos/agregar" method="post" enctype="multipart/form-data">
+              <form role="form" id="formulario" action="<?php echo RUTA_URL?>/public/categorias/agregar" method="post">
               <div class="box-body">
-                <div class="form-group">
-                  <label for="codigo">Código</label>
-                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código">
-                </div>
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
                   <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
                 </div>
                 <div class="form-group">
-                  <label for="precio">Precio</label>
-                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
-                </div>
-                <div class="form-group">
-                  <label for="cantidad">Cantidad</label>
-                  <input type="text" class="form-control" name="stock" id="stock" placeholder="Cantidad">
-                </div>
-                <div class="form-group">
-                  <label>Categoría</label>
-                  <select class="form-control select2" style="width: 100%;" name="categoria" id="categoria">
-                    <?php foreach($data as $categoria): ?>
-                      <option value="<?php echo $categoria[0]?>"><?php echo $categoria[1]?></option>
-                    <?php endforeach ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="cantidad">Imagen</label>
-                  <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Cantidad">
+                  <label for="descripcion">Descripción</label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
                 </div>
               </div>
               <!-- /.box-body -->
@@ -82,32 +62,16 @@
     llenos = 0; //Variable para contar los campos llenados
 
     //Se comprueba cada campo para ver si se escribió algo
-    if(formulario.codigo.value != 0){
-      llenos++;
-    }
-
     if(formulario.nombre.value != 0){
       llenos++;
     }
 
-    if(formulario.precio.value != 0){
-      llenos++;
-    }
-
-    if(formulario.stock.value != 0){
-      llenos++;
-    }
-
-    if(formulario.categoria.value != 0){
-      llenos++;
-    }
-
-    if(formulario.imagen.value != 0){
+    if(formulario.descripcion.value != 0){
       llenos++;
     }
 
     //Si no todos los campos están llenos...
-    if(llenos < 6){
+    if(llenos < 2){
       //...se mostrará una alerta diciéndolo
       swal({
         text: "Debes llenar todos los campos",
@@ -122,7 +86,7 @@
   function eventoAlert(){
     //Se crea la alerta
     swal({
-      title: "Producto agregado correctamente",
+      title: "Categoría agregada correctamente",
       icon: "success",
       button: "Aceptar",
     })

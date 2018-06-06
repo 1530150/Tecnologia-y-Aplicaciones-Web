@@ -7,9 +7,14 @@
       <strong>Copyright &copy; 2018 Todos los derechos reservados
     </footer>
 
-
+    <!-- Sweet Alert -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- jQuery 3 -->
     <script src="<?php echo RUTA_URL?>/public/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo RUTA_URL?>/public/plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="<?php echo RUTA_URL?>/public/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="<?php echo RUTA_URL?>/public/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script src="<?php echo RUTA_URL?>/public/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="<?php echo RUTA_URL?>/public/bower_components/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -47,5 +52,7 @@
     <script src="<?php echo RUTA_URL?>/public/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo RUTA_URL?>/public/dist/js/demo.js"></script>
+    <!-- MD5 -->
+    <script src="<?php echo RUTA_URL?>/public/dist/js/md5.min.js"></script>
   </body>
 </html>

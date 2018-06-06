@@ -24,35 +24,41 @@
           <div class="box">
             <!-- /.box-header -->
             <div class="box-body">
-              <form role="form" id="formulario" action="<?php echo RUTA_URL?>/public/productos/agregar" method="post" enctype="multipart/form-data">
+              <form role="form" id="formulario" action="<?php echo RUTA_URL?>/public/productos/editar" method="post" enctype="multipart/form-data">
               <div class="box-body">
                 <div class="form-group">
+                  <input type="hidden" name="id" id="id" value="<?php echo $data[0][0] ?>">
+                </div>
+                <div class="form-group">
                   <label for="codigo">Código</label>
-                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código">
+                  <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código" value="<?php echo $data[0][1] ?>">
                 </div>
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
-                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre">
+                  <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $data[0][2] ?>">
                 </div>
                 <div class="form-group">
                   <label for="precio">Precio</label>
-                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio">
+                  <input type="text" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $data[0][4] ?>">
                 </div>
                 <div class="form-group">
                   <label for="cantidad">Cantidad</label>
-                  <input type="text" class="form-control" name="stock" id="stock" placeholder="Cantidad">
+                  <input type="text" class="form-control" name="stock" id="stock" placeholder="Cantidad" value="<?php echo $data[0][5] ?>">
                 </div>
                 <div class="form-group">
                   <label>Categoría</label>
                   <select class="form-control select2" style="width: 100%;" name="categoria" id="categoria">
-                    <?php foreach($data as $categoria): ?>
-                      <option value="<?php echo $categoria[0]?>"><?php echo $categoria[1]?></option>
+                    <?php foreach($data[1] as $categoria): ?>
+                      <option value="<?php echo $categoria[0]?>" <?php if($data[0][6]==$categoria[0]) echo "selected" ?>><?php echo $categoria[1]?></option>
                     <?php endforeach ?>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="cantidad">Imagen</label>
-                  <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Cantidad">
+                  <label for="imagen">Imagen</label>
+                  <div class="">
+                    <img src="<?php echo RUTA_URL . substr($data[0][7], 58) ?>" class="img-circle" width="50px" height="50px">
+                    <input type="file" class="form-control" name="imagen" id="imagen" placeholder="Cantidad">
+                  </div>
                 </div>
               </div>
               <!-- /.box-body -->
@@ -102,12 +108,8 @@
       llenos++;
     }
 
-    if(formulario.imagen.value != 0){
-      llenos++;
-    }
-
     //Si no todos los campos están llenos...
-    if(llenos < 6){
+    if(llenos < 5){
       //...se mostrará una alerta diciéndolo
       swal({
         text: "Debes llenar todos los campos",
@@ -122,7 +124,7 @@
   function eventoAlert(){
     //Se crea la alerta
     swal({
-      title: "Producto agregado correctamente",
+      title: "Producto modificado correctamente",
       icon: "success",
       button: "Aceptar",
     })

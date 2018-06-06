@@ -10,15 +10,15 @@
 
     //Método para ir a la página principal
     public function index(){
-      $this->view("home/index");
+      $this->view("home/index", $this->modelo->getTotales());
     }
 
     //Página login
     public function login(){
-      //Es true cuando un post se envia, en este caso cuando se envía el formulario de registro
+      //Es true cuando un post se envia, en este caso cuando se envía el formulario del login
       if($_SERVER["REQUEST_METHOD"] == "POST"){
         $datos = [
-          "nombre" => trim($_POST["nombre"]),
+          "usuario" => trim($_POST["usuario"]),
           "clave" => trim($_POST["clave"]),
         ];
 
