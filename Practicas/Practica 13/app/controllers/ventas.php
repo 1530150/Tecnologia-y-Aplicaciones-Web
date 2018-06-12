@@ -30,7 +30,10 @@
           "cantidades" => $_POST["cantidades"],
           "cantidadesActuales" => $_POST["cantidadesActuales"],
           "total" => trim($_POST["total"]),
-          "tienda" => $_SESSION["tienda"]
+          "referencia" => trim($_POST["referencia"]),
+          "tienda" => $_SESSION["tienda"],
+          "usuario" => $_SESSION["id"],
+          "nombre_usuario" => $_SESSION["usuario"]
         ];
 
         $this->modelo->agregarVenta($datos); //Se agrega la categoría

@@ -130,7 +130,7 @@
 
     //Método para obtener el historial de modificaciones del producto
     public function getHistorial($id){
-      $this->trans->query("SELECT h.id, p.nombre, u.nombre, h.fecha, h.nota, h.referencia, h.cantidad FROM historiales h INNER JOIN productos p ON h.producto=p.id INNER JOIN usuarios u ON h.usuario=u.id WHERE h.producto=:id");
+      $this->trans->query("SELECT h.id, p.nombre, u.nombre, h.fecha, h.nota, h.referencia, h.cantidad FROM historiales h INNER JOIN productos p ON h.producto=p.id INNER JOIN usuarios u ON h.usuario=u.id WHERE h.producto=:id ORDER BY h.id DESC");
       $this->trans->bind(":id", $id);
       $res = $this->trans->execute();
 

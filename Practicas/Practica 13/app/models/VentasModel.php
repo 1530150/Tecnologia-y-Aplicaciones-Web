@@ -39,6 +39,23 @@
         $this->trans->bind(":producto", $data["productos"][$i]);
         $this->trans->bind(":cantidad", $resto);
         $this->trans->execute();
+
+
+        //Se prepara la consulta para agregar el historial
+        $this->trans->query("INSERT INTO historiales VALUES(null, :producto, :usuario, :fecha, :nota, :referencia, :cantidad, :tienda)");
+
+        $nota = $data["nombre_usuario"] . " vendió " . $data["cantidades"][$i] . " productos(s)"; //Se escribe la nota
+
+        //Se reemplazan los datos
+        $this->trans->bind(":producto", $data["productos"][$i]);
+        $this->trans->bind(":usuario", $data["usuario"]);
+        $this->trans->bind(":fecha", $fecha);
+        $this->trans->bind(":nota", $nota);
+        $this->trans->bind(":referencia", $data["referencia"]);
+        $this->trans->bind(":cantidad", $data["cantidades"][$i]);
+        $this->trans->bind(":tienda", $data["tienda"]);
+
+        $res = $this->trans->execute(); //Se ejecuta la consulta
       }
     }
 

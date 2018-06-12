@@ -31,6 +31,11 @@
               <!--  <form role="form" id="formulario" action="<?php echo RUTA_URL?>/public/ventas/agregar" method="post"> -->
               <div class="box-body">
                 <div class="form-group">
+                  <label for="nombre">Referencia</label>
+                  <input type="text" class="form-control" name="referencia" id="referencia" placeholder="Referencia">
+                  <p id="referenciaMsje" style="color: red;"></p>
+                </div>
+                <div class="form-group">
                   <label>Productos</label>
                   <select class="form-control" style="width: 100%;" name="lista_productos" id="lista_productos">
                     <?php foreach($data as $producto): ?>
@@ -94,6 +99,7 @@
 <script type="text/javascript">
   var total = 0; //Total de la venta
   var productos = []; //Array de productos
+  var referencia = ""; //Para guardar la referencia
 
   function agregarProducto(){
     var select = document.getElementById("lista_productos"); //Se obtiene el select de productos
@@ -186,6 +192,7 @@
     event.preventDefault(); //Se aborta el evento submit del formulario
 
     formulario = document.getElementById("formulario"); //Se obtiene el formulario
+    referencia = document.getElementById("referencia").value; //Se obtiene el valor de la referencia
 
     //Se recorre el array de productos
     for(var i=0; i<productos.length; i++){
@@ -218,8 +225,20 @@
     input4.value = total;
     formulario.appendChild(input4);
 
+    //Se crea un nuevo input tipo hidden en el que se agregará la referencia
+    var input5 = document.createElement("input");
+    input5.type = "hidden";
+    input5.name = "referencia";
+    input5.value = referencia;
+    formulario.appendChild(input5);
 
-    formulario.submit(); //se ejecuta el evento submit del formulario
+    //Si se agregó una referencia
+    if(referencia != ""){
+      formulario.submit(); //se ejecuta el evento submit del formulario
+    }
+    else{
+      document.getElementById("referenciaMsje").innerHTML = "Debes ingresar una referencia"; //Si no se muestra un mensaje pidiendo la referencia
+    }
   }
 
 </script>
