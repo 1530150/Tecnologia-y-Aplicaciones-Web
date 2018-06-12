@@ -32,6 +32,13 @@
         $this->trans->bind(":producto", $data["productos"][$i]);
         $this->trans->bind(":cantidad", $data["cantidades"][$i]);
         $this->trans->execute();
+
+        $resto = intval($data["cantidadesActuales"][$i]) - intval($data["cantidades"][$i]); //Stock restante
+        //Además se le restan productos al stock
+        $this->trans->query("UPDATE productos SET stock=:cantidad WHERE id=:producto");
+        $this->trans->bind(":producto", $data["productos"][$i]);
+        $this->trans->bind(":cantidad", $resto);
+        $this->trans->execute();
       }
     }
 

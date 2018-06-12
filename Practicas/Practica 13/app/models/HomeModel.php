@@ -20,6 +20,9 @@
 
       //Se crea la sesión y se guarda la info del usuario
       if($usuario = $res->fetch(PDO::FETCH_ASSOC)){
+        //Se valida que la tienda esté activada
+        if($this->getEstadoTienda($usuario["tienda"]) == 1){
+          //Si se cumple todo, se crea la sesión
           session_start();
           $_SESSION["nombre"] = $usuario["nombre"] . " " . $usuario["apellido"];
           $_SESSION["usuario"] = $usuario["nombre_usuario"];
@@ -29,11 +32,11 @@
           $_SESSION["id"] = $usuario["id"];
           $_SESSION["tienda"] = $usuario["tienda"];
 
-          return true;
+          return true; //Se devuelve true
+        }
       }
-      else{
-        return false;
-      }
+
+      return false; //Si no se cumple nada se devuelve false
     }
 
     //Método pra obtener la información que se mostrará en el dashboard
@@ -61,8 +64,14 @@
       $res = $this->trans->execute();
       $categorias = $res->fetchColumn();
 
+      //Número de ventas
+      $this->trans->query("SELECT COUNT(id) FROM ventas WHERE tienda=:tienda");
+      $this->trans->bind(":tienda", $tienda);
+      $res = $this->trans->execute();
+      $ventas = $res->fetchColumn();
+
       //Se retorna la lista de totales
-      return array($tiendas, $usuarios, $productos, $categorias);
+      return array($tiendas, $usuarios, $productos, $categorias, $ventas);
     }
 
     //Método para obtener la tienda en la que está registrada el usuario
@@ -77,6 +86,15 @@
     //Método para obtener el nombre de la tienda
     public function getNombreTienda($id){
       $this->trans->query("SELECT nombre FROM tiendas WHERE id=:id");
+      $this->trans->bind(":id", $id);
+      $res = $this->trans->execute();
+
+      return $res->fetchColumn();
+    }
+
+    //Método para obtener el estado de una tienda, si está activada o desactivada
+    public function getEstadoTienda($id){
+      $this->trans->query("SELECT activada FROM tiendas WHERE id=:id");
       $this->trans->bind(":id", $id);
       $res = $this->trans->execute();
 

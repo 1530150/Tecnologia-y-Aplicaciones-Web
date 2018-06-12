@@ -73,5 +73,13 @@
       header("Location: " . RUTA_URL . "/public/home/index");
     }
 
+
+    //Página para activar o desactivar una tienda
+    public function activar($id = ""){
+      $this->modelo->activarTienda($id); //Se activa/desactiva la tienda
+
+      header("Location: " . RUTA_URL . "/public/tiendas"); //Se regresa al index
+    }
+
   }
 ?>

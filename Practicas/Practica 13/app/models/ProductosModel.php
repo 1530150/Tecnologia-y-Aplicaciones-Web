@@ -73,7 +73,7 @@
 
 
       //Se prepara la consulta para agregar el historial
-      $this->trans->query("INSERT INTO historiales VALUES(null, :producto, :usuario, :fecha, :nota, :referencia, :cantidad)");
+      $this->trans->query("INSERT INTO historiales VALUES(null, :producto, :usuario, :fecha, :nota, :referencia, :cantidad, :tienda)");
 
       $fecha = date("Y-m-d"); //Se obtiene la fecha actual
 
@@ -84,6 +84,7 @@
       $this->trans->bind(":nota", $nota);
       $this->trans->bind(":referencia", $data["referencia"]);
       $this->trans->bind(":cantidad", $data["cantidad"]);
+      $this->trans->bind(":tienda", $data["tienda"]);
 
       $res = $this->trans->execute(); //Se ejecuta la consulta
 

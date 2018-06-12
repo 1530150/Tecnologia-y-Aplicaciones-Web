@@ -87,7 +87,8 @@
           "referencia" => trim($_POST["referencia"]),
           "cantidad_actual" => intval(trim($_POST["cant_actual"])),
           "usuario" => trim($_POST["usuario"]),
-          "usuario_user" => trim($_POST["usuario_user"])
+          "usuario_user" => trim($_POST["usuario_user"]),
+          "tienda" => $_SESSION["tienda"]
         ];
 
         $this->modelo->modificarStock($datos); //Se agrega el producto

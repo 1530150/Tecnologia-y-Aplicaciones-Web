@@ -148,7 +148,7 @@
                   <?php foreach($productosEscazos as $producto): ?>
                       <li>
                         <a href="<?php echo RUTA_URL?>/public/productos/detalles/<?php echo $producto[0] ?>">
-                          <i class="fa fa-warning text-red"></i> Solo quedan <?php echo $producto[5] . " " . $producto[2] ?> en stock
+                          <i class="fa fa-warning text-red"></i> Quedan <?php echo $producto[5] . " " . $producto[2] ?> en stock
                         </a>
                       </li>
                   <?php endforeach ?>
@@ -259,7 +259,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?php echo RUTA_URL?>/public/categorias/agregar"><i class="fa fa-circle-o"></i>Agregar categoría</a></li>
-              <li><a href="<?php echo RUTA_URL?>/public/categorias/"><i class="fa fa-tags"></i> Ver categorias</a></li>
+              <li><a href="<?php echo RUTA_URL?>/public/categorias/"><i class="fa fa-circle-o"></i> Ver categorias</a></li>
             </ul>
           </li>
 
@@ -272,7 +272,7 @@
             </a>
             <ul class="treeview-menu">
               <li><a href="<?php echo RUTA_URL?>/public/ventas/agregar"><i class="fa fa-circle-o"></i>Agregar venta</a></li>
-              <li><a href="<?php echo RUTA_URL?>/public/ventas/"><i class="fa fa-tags"></i> Ver ventas</a></li>
+              <li><a href="<?php echo RUTA_URL?>/public/ventas/"><i class="fa fa-circle-o"></i> Ver ventas</a></li>
             </ul>
           </li>
         <?php endif ?>

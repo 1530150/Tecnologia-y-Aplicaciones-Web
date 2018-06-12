@@ -28,6 +28,7 @@
         $datos = [
           "productos" => $_POST["productos"],
           "cantidades" => $_POST["cantidades"],
+          "cantidadesActuales" => $_POST["cantidadesActuales"],
           "total" => trim($_POST["total"]),
           "tienda" => $_SESSION["tienda"]
         ];

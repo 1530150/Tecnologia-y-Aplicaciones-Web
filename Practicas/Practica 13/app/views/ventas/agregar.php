@@ -35,7 +35,7 @@
                   <select class="form-control" style="width: 100%;" name="lista_productos" id="lista_productos">
                     <?php foreach($data as $producto): ?>
                       <!-- El option guardará como valor el id, nombre y precio del producto -->
-                      <option value="<?php echo $producto[0] . ',' . $producto[2] . ',' . $producto[4]?>"><?php echo $producto[2]?></option>
+                      <option value="<?php echo $producto[0] . ',' . $producto[2] . ',' . $producto[4] . ',' . $producto[5]?>"><?php echo $producto[2]?></option>
                     <?php endforeach ?>
                   </select>
                 </div>
@@ -99,8 +99,9 @@
     var select = document.getElementById("lista_productos"); //Se obtiene el select de productos
     var producto = (select.value).split(","); //Se guarda el producto seleccionado en un array
 
-    if(!productoExiste(producto[0])){
-      productos[productos.length] = [producto[0], producto[1], producto[2], 1]; //Se agrega el producto al array de productos
+    //Se valida que el producto no esté en la lista de productos y que esté en stock
+    if(!productoExiste(producto[0]) && producto[3] != 0){
+      productos[productos.length] = [producto[0], producto[1], producto[2], producto[3], 1]; //Se agrega el producto al array de productos
     }
 
     dibujarTabla(); //Se dibuja la tabla
@@ -130,10 +131,10 @@
       //Se le asigna información a las columnas
       col1.innerHTML=productos[i][1];
       col2.innerHTML=productos[i][2];
-      col3.innerHTML=productos[i][3];
+      col3.innerHTML=productos[i][4];
       col4.innerHTML="<button ' class='btn btn-group-vertical btn-danger' value='" + productos[i][0] + "' onclick='quitarLista(this.value)'>Eliminar</button>";
 
-      total += (productos[i][2] * productos[i][3]); //Se acumula el total
+      total += (productos[i][2] * productos[i][4]); //Se acumula el total
     }
 
     document.getElementById("total").innerHTML = "$" + total; //Se muestra el total en la interfaz
@@ -153,7 +154,10 @@
     for(var i=0; i<productos.length; i++){
       //Si se encuentra el producto
       if(productos[i][0] == id){
-        productos[i][3]++; //Se aumenta la cantidad
+        //Se valida que la cantidad de la venta no supere la cantidad en stock
+        if(productos[i][3] > productos[i][4]){
+          productos[i][4]++; //Se aumenta la cantidad
+        }
 
         return true; //Se devuelve true
       }
@@ -196,16 +200,23 @@
       var input2 = document.createElement("input");
       input2.type = "hidden";
       input2.name = "cantidades[]";
-      input2.value = productos[i][3];
+      input2.value = productos[i][4];
       formulario.appendChild(input2);
+
+      //Se crea un nuevo input tipo hidden en el que se agregará la cantidad actual del producto en la posición i
+      var input3 = document.createElement("input");
+      input3.type = "hidden";
+      input3.name = "cantidadesActuales[]";
+      input3.value = productos[i][3];
+      formulario.appendChild(input3);
     }
 
     //Se crea un nuevo input tipo hidden en el que se agregará el total de la venta
-    var input3 = document.createElement("input");
-    input3.type = "hidden";
-    input3.name = "total";
-    input3.value = total;
-    formulario.appendChild(input3);
+    var input4 = document.createElement("input");
+    input4.type = "hidden";
+    input4.name = "total";
+    input4.value = total;
+    formulario.appendChild(input4);
 
 
     formulario.submit(); //se ejecuta el evento submit del formulario

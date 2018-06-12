@@ -36,18 +36,32 @@
                     <tr>
                       <th>Nombre</th>
                       <th>Descripción</th>
+                      <th>Estado</th>
                       <th>Opciones</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach($data as $tienda): ?>
+                      <?php
+                        //Se comprueba el estado de la tienda y dependiendo de eso se le da el valor al botón de activar o desactivar
+                        if($tienda[3] == 0){
+                          $estado = "Activar";
+                          $estado2 = "Desactivada";
+                        }
+                        else{
+                          $estado = "Desactivar";
+                          $estado2 = "Activada";
+                        }
+                      ?>
                       <tr>
                         <td><?php echo $tienda[1] ?></td>
                         <td><?php echo $tienda[2] ?></td>
+                        <td><?php echo $estado2 ?></td>
                         <td>
                           <a href="<?php echo RUTA_URL ?>/public/tiendas/editar/<?php echo $tienda[0] ?>" class="btn btn-group-vertical btn-primary">Modificar</a>
                           <button name="eliminar" value="<?php echo $tienda[0] ?>" class="btn btn-group-vertical btn-danger">Eliminar</button>
                           <a href="<?php echo RUTA_URL ?>/public/tiendas/entrar/<?php echo $tienda[0] ?>" class="btn btn-group-vertical bg-maroon">Entrar</a>
+                          <a href="<?php echo RUTA_URL ?>/public/tiendas/activar/<?php echo $tienda[0] ?>" class="btn btn-group-vertical bg-navy"><?php echo $estado ?></a>
                         </td>
                       </tr>
                     <?php endforeach ?>

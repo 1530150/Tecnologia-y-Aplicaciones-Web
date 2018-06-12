@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 11-06-2018 a las 09:36:29
+-- Tiempo de generación: 11-06-2018 a las 23:57:58
 -- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -63,6 +63,14 @@ CREATE TABLE `historiales` (
   `tienda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `historiales`
+--
+
+INSERT INTO `historiales` (`id`, `producto`, `usuario`, `fecha`, `nota`, `referencia`, `cantidad`, `tienda`) VALUES
+(1, 2, 1, '2018-06-11', 'briianeb agregó 4 producto(s) al inventario', '9209', 4, 2),
+(2, 2, 1, '2018-06-11', 'briianeb agregó 1 producto(s) al inventario', '109390', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -86,8 +94,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `nombre`, `fecha_agregado`, `precio`, `stock`, `categoria`, `ruta_img`, `tienda`) VALUES
-(1, '1111', 'Manzana', '2018-06-05', 12, 8, 1, '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/manzana.jpg', 2),
-(2, '999', 'Pera', '2018-06-11', 10, 5, 1, '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/peras.jpg', 2);
+(1, '1111', 'Manzana', '2018-06-05', 12, 7, 1, '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/manzana.jpg', 2),
+(2, '999', 'Pera', '2018-06-11', 10, 9, 1, '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/peras.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -98,17 +106,18 @@ INSERT INTO `productos` (`id`, `codigo`, `nombre`, `fecha_agregado`, `precio`, `
 CREATE TABLE `tiendas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
-  `descripcion` varchar(300) DEFAULT NULL
+  `descripcion` varchar(300) DEFAULT NULL,
+  `activada` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `tiendas`
 --
 
-INSERT INTO `tiendas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Administrador', 'admin'),
-(2, 'Frutería', 'Donde se venden frutas'),
-(3, 'Ropa', 'Aquí se vende ropa');
+INSERT INTO `tiendas` (`id`, `nombre`, `descripcion`, `activada`) VALUES
+(1, 'Administrador', 'admin', 1),
+(2, 'Frutería', 'Donde se venden frutas', 1),
+(3, 'Ropa', 'Aquí se vende ropa', 1);
 
 -- --------------------------------------------------------
 
@@ -134,7 +143,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `nombre_usuario`, `password`, `correo`, `fecha_registro`, `ruta_img`, `tienda`) VALUES
 (1, 'Brian Elí', 'Becerra Hernández', 'briianeb', '929064f2a141f812f1c2efb3ff8194ca', '1530150@upv.edu.mx', '2018-06-05', '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/sdsdsd.jpg', 1),
-(2, 'Pedro Vicent', 'Rezandero Portillo', 'pedfer28', '3fe751bd95d3be007cf1267f37b3048a', 'pedfer28@gmail.com', '2018-06-10', '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/avatar04.png', 2);
+(2, 'Pedro Vicente', 'Rezandero Portillo', 'pedfer28', '3fe751bd95d3be007cf1267f37b3048a', 'pedfer28@gmail.com', '2018-06-10', '/var/www/html/tecnologia-y-aplicaciones-web/inventario/public/dist/img/avatar04.png', 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +163,8 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id`, `fecha`, `total`, `tienda`) VALUES
-(1, '2018-06-11', 80, 2);
+(1, '2018-06-11', 80, 2),
+(3, '2018-06-11', 22, 2);
 
 -- --------------------------------------------------------
 
@@ -174,7 +184,9 @@ CREATE TABLE `venta_productos` (
 
 INSERT INTO `venta_productos` (`venta`, `producto`, `cantidad`) VALUES
 (1, 1, 5),
-(1, 2, 2);
+(1, 2, 2),
+(3, 1, 1),
+(3, 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -244,7 +256,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `historiales`
 --
 ALTER TABLE `historiales`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
@@ -264,7 +276,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
