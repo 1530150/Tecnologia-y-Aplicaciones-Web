@@ -2,8 +2,8 @@
   include_once RUTA_APP . "/views/header.php";
 
   //Se comprueba si hay una sesión iniciada
-  if(Home::sesionIniciada()){
-    header("Location: " . RUTA_URL . "/public/home/pagos/"); //Si la hay manda al inicio
+  if(!Home::sesionIniciada()){
+    header("Location: " . RUTA_URL . "/public/home/index"); //Si la hay manda al inicio
   }
 ?>
 
@@ -33,18 +33,22 @@
                     <th>Nombre mama</th>
                     <th>Fecha de pago</th>
                     <th>Fecha de envío</th>
+                    <th>Folio</th>
+                    <th>Comprobante de folio</th>
                   </tr>
                 </thead>
                 <tbody>
                   <!-- Ciclo para imprimir todas las lugares y su respectiva información -->
-                  <?php foreach($data as $lugar): ?>
+                  <?php foreach($data as $pago): ?>
                       <tr>
-                        <td><?php echo $lugar[0] ?></td>
-                        <td><?php echo $lugar[1] ?></td>
-                        <td><?php echo $lugar[2] ?></td>
-                        <td><?php echo $lugar[3] ?></td>
-                        <td><?php echo $lugar[4] ?></td>
-                        <td><?php echo $lugar[5] ?></td>
+                        <td><?php echo $pago[0] ?></td>
+                        <td><?php echo $pago[1] ?></td>
+                        <td><?php echo $pago[2] ?></td>
+                        <td><?php echo $pago[3] ?></td>
+                        <td><?php echo $pago[4] ?></td>
+                        <td><?php echo $pago[5] ?></td>
+                        <td><?php echo $pago[6] ?></td>
+                        <td><a href="<?php echo RUTA_URL . substr($pago[7], 56) ?>">Ver</a> </td>
                       </tr>
                     <?php endforeach ?>
                 </tbody>

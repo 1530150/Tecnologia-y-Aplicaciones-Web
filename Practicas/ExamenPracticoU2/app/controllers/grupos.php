@@ -6,6 +6,7 @@
     //Constructor
     public function __construct(){
       $this->modelo = $this->model("GruposModel");
+      session_start(); //Para poder acceder a la variable $_SESSION
     }
 
     //Página index

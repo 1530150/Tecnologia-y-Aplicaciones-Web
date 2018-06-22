@@ -1,6 +1,6 @@
 <?php
-  //Se valida si hay una sesión iniciada
-  if(HomeModel::sesionIniciada()){
+  //Se comprueba si hay una sesión iniciada
+  if(Home::sesionIniciada()){
     header("Location: " . RUTA_URL . "/public/home/index"); //Si la hay manda al inicio
   }
 ?>
@@ -23,15 +23,21 @@
           <section class="section">
             <div class="content" data-slug="panel1">
               <div class="row">
-                <form class="form-validation" id="formulario" action="<?php echo RUTA_URL?>/public/home/login" method="post">
+                <form class="form-validation" id="formulario" action="<?php echo RUTA_URL?>/public/home/admin" method="post">
                   <div class="form-group">
-                      <label for="nombre">Correo electrónico</label>
-                      <input type="text" name="nombre" id="nombre" placeholder="Correo electrónico" class="form-control">
+                      <label for="usuario">Usuario</label>
+                      <input type="text" name="usuario" id="usuario" placeholder="Usuario" class="form-control">
                   </div>
                   <div class="form-group">
                       <label for="clave">Contraseña</label>
                       <input type="password" name="clave" id="clave" placeholder="Contraseña" class="form-control">
                   </div>
+                  <!-- Si se pasó el parametro "mal" se imprime un mensaje de usuario o contraseña incorrectos -->
+                  <?php if($data == "mal"): ?>
+                    <div class="form-group has-feedback">
+                      <p style="color: red;">Usuario o contraseña incorrectos</p>
+                    </div>
+                  <?php endif ?>
                   <div class="form-group m-b-0" align="center">
                       <button class="btn btn-primary waves-effect waves-light" type="submit" onclick="validar();">
                           Enviar
@@ -53,7 +59,7 @@
         llenos = 0; //Variable para contar los campos llenados
 
         //Se comprueba cada campo para ver si se escribió algo
-        if(formulario.nombre.value != 0){
+        if(formulario.usuario.value != 0){
           llenos++;
         }
 

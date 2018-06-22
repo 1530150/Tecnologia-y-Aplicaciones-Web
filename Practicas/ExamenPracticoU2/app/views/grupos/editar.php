@@ -1,11 +1,10 @@
 <?php
   include_once RUTA_APP . "/views/header.php";
-/*
-  //Si el usuario no es admin
-  if(!HomeModel::esAdmin()){
-    header("Location: " . RUTA_URL . "/public/home/"); //Lo manda al inicio
+
+  //Se comprueba si hay una sesión iniciada
+  if(!Home::sesionIniciada()){
+    header("Location: " . RUTA_URL . "/public/home/index"); //Si la hay manda al inicio
   }
-*/
 ?>
 
 

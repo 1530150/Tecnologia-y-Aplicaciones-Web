@@ -10,20 +10,18 @@
 
     //Método para iniciar sesión
     function validarLogin($data){
-      $this->trans->query("SELECT * FROM profesores WHERE email=:email AND password=:clave"); //Consulta
+      $this->trans->query("SELECT * FROM usuarios WHERE nombre=:nombre AND password=:clave"); //Consulta
       $data["clave"] = md5($data["clave"]);
 
       //Preparación y ejecución de la consulta
-      $this->trans->bind(":email", $data["nombre"]);
+      $this->trans->bind(":nombre", $data["nombre"]);
       $this->trans->bind(":clave", $data["clave"]);
       $res = $this->trans->execute();
 
       //Se crea la sesión y se guarda la info del usuario
       if($usuario = $res->fetch(PDO::FETCH_ASSOC)){
           session_start();
-          $_SESSION["id"] = $usuario["numEmpleado"];
           $_SESSION["usuario"] = $usuario["nombre"];
-          $_SESSION["nivel"] = $usuario["nivel"];
 
           return true;
       }
@@ -32,16 +30,51 @@
       }
     }
 
-    //Método para verificar si hay una sesión iniciada
-    function sesionIniciada(){
-        session_start();
-        return isset($_SESSION["usuario"]);
+    //Método para obtener todas las alumnas
+    public function getAlumnas(){
+      $this->trans->query("SELECT a.id, CONCAT(a.nombre, ' ', a.apellido), a.fecha_nacimiento, g.nombre FROM alumnas a INNER JOIN grupos g ON a.grupo=g.id");
+      $res = $this->trans->execute();
+
+      return $res->fetchAll();
     }
 
-    //Método para verificar si el usuario es un administrador
-    function esAdmin(){
-      //return $_SESSION["nivel"] == "Administrador";
+    //Método para obtener todas las grupos
+    public function getGrupos(){
+      $this->trans->query("SELECT * FROM grupos");
+      $res = $this->trans->execute();
+
+      return $res->fetchAll();
     }
+
+    //Método para agregar una alumna
+    public function agregarPago($data){
+      $this->trans->query("INSERT INTO pagos VALUES(null, :grupo, :alumna, :nombre_mama, :apellido_mama, :fecha_pago, :fecha_envio, :folio, :folio_img)");
+
+      $fecha_envio = date("d-m-Y H:i:s"); //Se obtiene la fecha actual
+      $destino_img = substr(RUTA_APP, 0, -4) . "/public/img/" . $data["nombre_img"]; //Se crea el destino de la imagen
+      copy($data["ruta_img"], $destino_img); //Se copia la imagen al servidor
+
+      $this->trans->bind(":grupo", $data["grupo"]);
+      $this->trans->bind(":alumna", $data["alumna"]);
+      $this->trans->bind(":nombre_mama", $data["nombre_mama"]);
+      $this->trans->bind(":apellido_mama", $data["apellido_mama"]);
+      $this->trans->bind(":fecha_pago", $data["fecha_pago"]);
+      $this->trans->bind(":fecha_envio", $fecha_envio);
+      $this->trans->bind(":folio", $data["folio"]);
+      $this->trans->bind(":folio_img", $destino_img);
+
+      $res = $this->trans->execute();
+    }
+
+    //Método para obtener todas las alumnas
+    public function getPagos(){
+      $this->trans->query("SELECT p.id, g.nombre, CONCAT(a.nombre, ' ', a.apellido), CONCAT(p.nombre_mama, ' ', p.apellido_mama), p.fecha_pago, p.fecha_envio, p.folio, p.imagen_folio FROM pagos p INNER JOIN grupos g ON p.grupo=g.id INNER JOIN alumnas a ON p.alumna=a.id");
+      $res = $this->trans->execute();
+
+      return $res->fetchAll();
+    }
+
+
 
   }
 ?>
