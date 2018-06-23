@@ -57,7 +57,7 @@
       function validar(){
         event.preventDefault(); //Se aborta el evento submit del formulario
         llenos = 0; //Variable para contar los campos llenados
-
+      
         //Se comprueba cada campo para ver si se escribió algo
         if(formulario.usuario.value != 0){
           llenos++;

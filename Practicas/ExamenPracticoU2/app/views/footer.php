@@ -14,6 +14,7 @@
     </footer>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="<?php echo RUTA_URL?>/public/js/vendor/modernizr.js"></script>
+    <script src="<?php echo RUTA_URL?>/public/js/jquery-3.3.1.min.js.js"></script>
     <script>
       document.write('<script src=./js/vendor/' +
       ('__proto__' in {} ? 'zepto' : 'jquery') +

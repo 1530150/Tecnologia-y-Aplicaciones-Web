@@ -66,9 +66,18 @@
       $res = $this->trans->execute();
     }
 
-    //Método para obtener todas las alumnas
+    //Método para obtener todos los pagos
     public function getPagos(){
-      $this->trans->query("SELECT p.id, g.nombre, CONCAT(a.nombre, ' ', a.apellido), CONCAT(p.nombre_mama, ' ', p.apellido_mama), p.fecha_pago, p.fecha_envio, p.folio, p.imagen_folio FROM pagos p INNER JOIN grupos g ON p.grupo=g.id INNER JOIN alumnas a ON p.alumna=a.id");
+      $this->trans->query("SELECT p.id, g.nombre, CONCAT(a.nombre, ' ', a.apellido), CONCAT(p.nombre_mama, ' ', p.apellido_mama), p.fecha_pago, p.fecha_envio, p.folio, p.imagen_folio FROM pagos p INNER JOIN grupos g ON p.grupo=g.id INNER JOIN alumnas a ON p.alumna=a.id ORDER BY p.id");
+      $res = $this->trans->execute();
+
+      return $res->fetchAll();
+    }
+
+    //Método para obtener todas las alumnas de un grupo
+    public function getAlumnasGrupo($grupo){
+      $this->trans->query("SELECT id, CONCAT(nombre, ' ', apellido) FROM alumnas WHERE grupo=:grupo");
+      $this->trans->bind(":grupo", $grupo);
       $res = $this->trans->execute();
 
       return $res->fetchAll();

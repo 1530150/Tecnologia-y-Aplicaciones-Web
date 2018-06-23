@@ -28,11 +28,15 @@
     }
 
     //Método para eliminar un grupo
-    public function eliminarGrupo($id){
-      $this->trans->query("DELETE FROM grupos WHERE id=:id");
-
+    public function eliminarGrupo($id){      
+      //Primero se eliminan las alumnas del grupo
+      $this->trans->query("DELETE FROM alumnas WHERE grupo=:id");
       $this->trans->bind(":id", $id);
+      $res = $this->trans->execute();
 
+      //Se elimina el grupo
+      $this->trans->query("DELETE FROM grupos WHERE id=:id");
+      $this->trans->bind(":id", $id);
       $res = $this->trans->execute();
     }
 

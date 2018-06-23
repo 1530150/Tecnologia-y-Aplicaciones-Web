@@ -7,7 +7,6 @@
   }
 
 ?>
-
 <div class="large-12 columns" align="center">
   <h4>Formulario de envío de Comprobantes</h4>
   <h4>Festival Verano 2018</h4>
@@ -25,14 +24,16 @@
               <div class="form-group">
                 <label for="carrera">Grupo:</label>
                 <select class="form-control" name="grupo" id="grupo">
+                  <option value="">Seleccionar grupo</option>
                   <?php foreach($data[0] as $grupo): ?>
-                    <option value="<?php echo $grupo[0]?>"><?php echo $grupo[1]?></option>
+                    <option value="<?php echo $grupo[0]?>" <?php if($data[2]==$grupo[0]) echo "selected" ?>><?php echo $grupo[1]?></option>
                   <?php endforeach ?>
                 </select>
               </div>
               <div class="form-group">
                 <label for="carrera">Alumnas:</label>
                 <select class="form-control" name="alumna" id="alumna">
+                  <option value="">Seleccionar alumna</option>
                   <?php foreach($data[1] as $alumna): ?>
                     <option value="<?php echo $alumna[0]?>"><?php echo $alumna[1]?></option>
                   <?php endforeach ?>
@@ -76,6 +77,18 @@
 <?php include_once RUTA_APP . "/views/footer.php"; ?>
 
 <script type="text/javascript">
+  //Para mostrar las alumnas del grupo seleccionado
+  $(document).ready(function(){
+    $("#grupo").change(function(){
+      //Cuando se seleccione algun elemento del select
+      $("#grupo option:selected").each(function(){
+        //Se guardará el id y se recargará la página para cargar las alumnas del grupo seleccionado
+        grupo = $(this).val();
+        window.location.href = "<?php echo RUTA_URL; ?>/public/home/index/"+grupo;
+      });
+    })
+  });
+
   formulario = document.getElementById("formulario"); //Se obtiene el formulario
 
   function validar(){

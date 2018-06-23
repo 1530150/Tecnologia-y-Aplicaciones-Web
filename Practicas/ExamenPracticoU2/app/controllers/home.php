@@ -10,8 +10,8 @@
     }
 
     //Método para ir a la página principal
-    public function index(){
-      $this->view("home/index", [$this->modelo->getGrupos(), $this->modelo->getAlumnas()]);
+    public function index($grupo = ""){
+      $this->view("home/index", [$this->modelo->getGrupos(), $this->modelo->getAlumnasGrupo($grupo), $grupo]);
     }
 
     //Método para ir a la página para visualizar los lugares de registros
@@ -76,7 +76,7 @@
 
         $this->modelo->agregarPago($datos); //Se agrega el pago
 
-        $this->index(); //Se regresa al index
+        $this->lugares(); //Se regresa al index
       }
   }
 
@@ -84,5 +84,6 @@
   public function sesionIniciada(){
       return isset($_SESSION["usuario"]);
   }
+
 }
 ?>
